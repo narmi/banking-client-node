@@ -1,32 +1,28 @@
 /**
  * Narmi Banking API
-
  *
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Transaction'], factory);
+    define(['ApiClient', 'model/AccountBalances'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Transaction'));
+    module.exports = factory(require('../ApiClient'), require('./AccountBalances'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.InlineResponse2006 = factory(root.banking_client.ApiClient, root.banking_client.Transaction);
+    root.BankingClient.InlineResponse2006 = factory(root.BankingClient.ApiClient, root.BankingClient.AccountBalances);
   }
-}(this, function(ApiClient, Transaction) {
+}(this, function(ApiClient, AccountBalances) {
   'use strict';
 
 
@@ -61,14 +57,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('transaction')) {
-        obj['transaction'] = Transaction.constructFromObject(data['transaction']);
+        obj['transaction'] = AccountBalances.constructFromObject(data['transaction']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/Transaction} transaction
+   * @member {module:model/AccountBalances} transaction
    */
   exports.prototype['transaction'] = undefined;
 

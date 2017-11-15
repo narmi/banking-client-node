@@ -4,10 +4,7 @@
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -20,10 +17,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.GeneralApi = factory(root.banking_client.ApiClient);
+    root.BankingClient.GeneralApi = factory(root.BankingClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,19 +32,19 @@
    */
 
   /**
-   * Constructs a new GeneralApi.
+   * Constructs a new GeneralApi. 
    * @alias module:api/GeneralApi
    * @class
-   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
    */
   var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
+    this.apiClient = apiClient || ApiClient.configuration;
 
 
     /**
-     * Callback function to receive the result of the pingGet operation.
-     * @callback module:api/GeneralApi~pingGetCallback
+     * Callback function to receive the result of the listPing operation.
+     * @callback module:api/GeneralApi~listPingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -56,15 +53,17 @@
     /**
      * Server heartbeat operation
      * Publicly available endpoint to answer the question, \&quot;are you there?\&quot;
-     * @param {module:api/GeneralApi~pingGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/GeneralApi~listPingCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.pingGet = function(callback) {
+    this.listPing = function(callback) {
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
+      };
+      var collectionQueryParams = {
       };
       var headerParams = {
       };
@@ -78,7 +77,7 @@
 
       return this.apiClient.callApi(
         '/ping', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }

@@ -4,10 +4,7 @@
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -20,10 +17,10 @@
     module.exports = factory(require('../ApiClient'), require('./User'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.InlineResponse2001 = factory(root.banking_client.ApiClient, root.banking_client.User);
+    root.BankingClient.InlineResponse2001 = factory(root.BankingClient.ApiClient, root.BankingClient.User);
   }
 }(this, function(ApiClient, User) {
   'use strict';

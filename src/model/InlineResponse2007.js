@@ -1,32 +1,28 @@
 /**
  * Narmi Banking API
-
  *
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Links', 'model/Meta', 'model/Subscription'], factory);
+    define(['ApiClient', 'model/Transaction'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Links'), require('./Meta'), require('./Subscription'));
+    module.exports = factory(require('../ApiClient'), require('./Transaction'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.InlineResponse2007 = factory(root.banking_client.ApiClient, root.banking_client.Links, root.banking_client.Meta, root.banking_client.Subscription);
+    root.BankingClient.InlineResponse2007 = factory(root.BankingClient.ApiClient, root.BankingClient.Transaction);
   }
-}(this, function(ApiClient, Links, Meta, Subscription) {
+}(this, function(ApiClient, Transaction) {
   'use strict';
 
 
@@ -47,8 +43,6 @@
     var _this = this;
 
 
-
-
   };
 
   /**
@@ -62,31 +56,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('subscriptions')) {
-        obj['subscriptions'] = ApiClient.convertToType(data['subscriptions'], [Subscription]);
-      }
-      if (data.hasOwnProperty('meta')) {
-        obj['meta'] = Meta.constructFromObject(data['meta']);
-      }
-      if (data.hasOwnProperty('links')) {
-        obj['links'] = Links.constructFromObject(data['links']);
+      if (data.hasOwnProperty('transaction')) {
+        obj['transaction'] = Transaction.constructFromObject(data['transaction']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<module:model/Subscription>} subscriptions
+   * @member {module:model/Transaction} transaction
    */
-  exports.prototype['subscriptions'] = undefined;
-  /**
-   * @member {module:model/Meta} meta
-   */
-  exports.prototype['meta'] = undefined;
-  /**
-   * @member {module:model/Links} links
-   */
-  exports.prototype['links'] = undefined;
+  exports.prototype['transaction'] = undefined;
 
 
 

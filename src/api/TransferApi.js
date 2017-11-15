@@ -4,10 +4,7 @@
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -20,10 +17,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/Transfer'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.TransferApi = factory(root.banking_client.ApiClient, root.banking_client.Error, root.banking_client.Transfer);
+    root.BankingClient.TransferApi = factory(root.BankingClient.ApiClient, root.BankingClient.Error, root.BankingClient.Transfer);
   }
 }(this, function(ApiClient, Error, Transfer) {
   'use strict';
@@ -35,19 +32,19 @@
    */
 
   /**
-   * Constructs a new TransferApi.
+   * Constructs a new TransferApi. 
    * @alias module:api/TransferApi
    * @class
-   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
    */
   var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
+    this.apiClient = apiClient || ApiClient.configuration;
 
 
     /**
-     * Callback function to receive the result of the transfersPost operation.
-     * @callback module:api/TransferApi~transfersPostCallback
+     * Callback function to receive the result of the create operation.
+     * @callback module:api/TransferApi~createCallback
      * @param {String} error Error message, if any.
      * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -55,23 +52,22 @@
 
     /**
      * Create a transfer
-
      * @param {module:model/Transfer} body Transfer object representing money to be moved between accounts
      * @param {Object} opts Optional parameters
-     * @param {String} opts.xRequestId
-     * @param {module:api/TransferApi~transfersPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {String} opts.authorization 
+     * @param {String} opts._date 
+     * @param {String} opts.signature 
+     * @param {String} opts.xRequestId 
+     * @param {module:api/TransferApi~createCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Object}
      */
-    this.transfersPost = function(body, opts, callback) {
+    this.create = function(body, opts, callback) {
       opts = opts || {};
       var postBody = body;
 
-
-
-
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling transfersPost");
+        throw new Error("Missing the required parameter 'body' when calling create");
       }
 
 
@@ -79,8 +75,12 @@
       };
       var queryParams = {
       };
+      var collectionQueryParams = {
+      };
       var headerParams = {
-
+        'Authorization': opts['authorization'],
+        'Date': opts['_date'],
+        'Signature': opts['signature'],
         'X-Request-Id': opts['xRequestId']
       };
       var formParams = {
@@ -93,7 +93,7 @@
 
       return this.apiClient.callApi(
         '/transfers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }

@@ -1,26 +1,22 @@
 /**
  * Narmi Banking API
-
  *
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Account', 'model/AccountBalances', 'model/Address', 'model/Check', 'model/Document', 'model/Error', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2002', 'model/InlineResponse2003', 'model/InlineResponse2004', 'model/InlineResponse2005', 'model/InlineResponse2006', 'model/InlineResponse2007', 'model/InlineResponse201', 'model/Links', 'model/Location', 'model/Membership', 'model/Meta', 'model/Phone', 'model/Subscription', 'model/Transaction', 'model/Transfer', 'model/User', 'api/AccountApi', 'api/GeneralApi', 'api/PaginatedApi', 'api/SubscriptionApi', 'api/TransactionApi', 'api/TransferApi', 'api/UserApi'], factory);
+    define(['ApiClient', 'model/Account', 'model/AccountBalances', 'model/Address', 'model/Check', 'model/Document', 'model/Error', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2002', 'model/InlineResponse2003', 'model/InlineResponse2004', 'model/InlineResponse2005', 'model/InlineResponse2006', 'model/InlineResponse2007', 'model/InlineResponse2008', 'model/InlineResponse201', 'model/Links', 'model/Location', 'model/Membership', 'model/Meta', 'model/Phone', 'model/Subscription', 'model/Transaction', 'model/Transfer', 'model/User', 'api/AccountApi', 'api/GeneralApi', 'api/SubscriptionApi', 'api/TransactionApi', 'api/TransferApi', 'api/UserApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountBalances'), require('./model/Address'), require('./model/Check'), require('./model/Document'), require('./model/Error'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2002'), require('./model/InlineResponse2003'), require('./model/InlineResponse2004'), require('./model/InlineResponse2005'), require('./model/InlineResponse2006'), require('./model/InlineResponse2007'), require('./model/InlineResponse201'), require('./model/Links'), require('./model/Location'), require('./model/Membership'), require('./model/Meta'), require('./model/Phone'), require('./model/Subscription'), require('./model/Transaction'), require('./model/Transfer'), require('./model/User'), require('./api/AccountApi'), require('./api/GeneralApi'), require('./api/PaginatedApi'), require('./api/SubscriptionApi'), require('./api/TransactionApi'), require('./api/TransferApi'), require('./api/UserApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountBalances'), require('./model/Address'), require('./model/Check'), require('./model/Document'), require('./model/Error'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2002'), require('./model/InlineResponse2003'), require('./model/InlineResponse2004'), require('./model/InlineResponse2005'), require('./model/InlineResponse2006'), require('./model/InlineResponse2007'), require('./model/InlineResponse2008'), require('./model/InlineResponse201'), require('./model/Links'), require('./model/Location'), require('./model/Membership'), require('./model/Meta'), require('./model/Phone'), require('./model/Subscription'), require('./model/Transaction'), require('./model/Transfer'), require('./model/User'), require('./api/AccountApi'), require('./api/GeneralApi'), require('./api/SubscriptionApi'), require('./api/TransactionApi'), require('./api/TransferApi'), require('./api/UserApi'));
   }
-}(function(ApiClient, Account, AccountBalances, Address, Check, Document, Error, InlineResponse200, InlineResponse2001, InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2005, InlineResponse2006, InlineResponse2007, InlineResponse201, Links, Location, Membership, Meta, Phone, Subscription, Transaction, Transfer, User, AccountApi, GeneralApi, PaginatedApi, SubscriptionApi, TransactionApi, TransferApi, UserApi) {
+}(function(ApiClient, Account, AccountBalances, Address, Check, Document, Error, InlineResponse200, InlineResponse2001, InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2005, InlineResponse2006, InlineResponse2007, InlineResponse2008, InlineResponse201, Links, Location, Membership, Meta, Phone, Subscription, Transaction, Transfer, User, AccountApi, GeneralApi, SubscriptionApi, TransactionApi, TransferApi, UserApi) {
   'use strict';
 
   /**
@@ -29,9 +25,9 @@
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
    * <pre>
-   * var banking_client = require('index'); // See note below*.
-   * var xxxSvc = new banking_client.XxxApi(); // Allocate the API class we're going to use.
-   * var yyyModel = new banking_client.Yyy(); // Construct a model instance.
+   * var BankingClient = require('index'); // See note below*.
+   * var xxxSvc = new BankingClient.XxxApi(); // Allocate the API class we're going to use.
+   * var yyyModel = new BankingClient.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -43,8 +39,8 @@
    * <p>
    * A non-AMD browser application (discouraged) might do something like this:
    * <pre>
-   * var xxxSvc = new banking_client.XxxApi(); // Allocate the API class we're going to use.
-   * var yyy = new banking_client.Yyy(); // Construct a model instance.
+   * var xxxSvc = new BankingClient.XxxApi(); // Allocate the API class we're going to use.
+   * var yyy = new BankingClient.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -131,6 +127,11 @@
      */
     InlineResponse2007: InlineResponse2007,
     /**
+     * The InlineResponse2008 model constructor.
+     * @property {module:model/InlineResponse2008}
+     */
+    InlineResponse2008: InlineResponse2008,
+    /**
      * The InlineResponse201 model constructor.
      * @property {module:model/InlineResponse201}
      */
@@ -184,37 +185,32 @@
      * The AccountApi service constructor.
      * @property {module:api/AccountApi}
      */
-    AccountApi: AccountApi,
+    accounts: new AccountApi(),
     /**
      * The GeneralApi service constructor.
      * @property {module:api/GeneralApi}
      */
-    GeneralApi: GeneralApi,
-    /**
-     * The PaginatedApi service constructor.
-     * @property {module:api/PaginatedApi}
-     */
-    PaginatedApi: PaginatedApi,
+    generals: new GeneralApi(),
     /**
      * The SubscriptionApi service constructor.
      * @property {module:api/SubscriptionApi}
      */
-    SubscriptionApi: SubscriptionApi,
+    subscriptions: new SubscriptionApi(),
     /**
      * The TransactionApi service constructor.
      * @property {module:api/TransactionApi}
      */
-    TransactionApi: TransactionApi,
+    transactions: new TransactionApi(),
     /**
      * The TransferApi service constructor.
      * @property {module:api/TransferApi}
      */
-    TransferApi: TransferApi,
+    transfers: new TransferApi(),
     /**
      * The UserApi service constructor.
      * @property {module:api/UserApi}
      */
-    UserApi: UserApi
+    users: new UserApi()
   };
 
   return exports;

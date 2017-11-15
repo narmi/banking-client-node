@@ -1,15 +1,15 @@
-# Banking API
+# banking-client-node
 
-banking_client - JavaScript client for Narmi's Banking API
+BankingClient - JavaScript client for banking-client
 
-## Introduction
+This SDK is automatically generated for:
 
 - API version: 0.1.0
 - Package version: 0.1.0
 
 ## Installation
 
-### npm
+### node (npm)
 
 The library is hosted at a git repository, (https://github.com/narmitech/banking-client-node), it can be installed via:
 
@@ -31,34 +31,44 @@ Or in a `package.json`:
 
 ## Getting Started
 
-
-Example usage:
+Please follow the [installation](#installation) instruction and execute the following JS code:
 
 ```javascript
-var banking_client = require('banking-client');
-var defaultClient = banking_client.ApiClient.instance;
-defaultClient.basePath = "YOUR BASE PATH"
+var BankingClient = require('banking-client');
 
-// Configure OAuth2 access token for authorization: Application
-var Application = defaultClient.authentications['Application'];
-Application.accessToken = "YOUR ACCESS TOKEN"
-Application.secret = "YOUR SECRET"
+var config = BankingClient.ApiClient.configuration;
+config.basePath = "YOUR BASE PATH"
 
-var api = new banking_client.AccountApi()
+// Configure OAuth2 access token
+var auth = config.authentications['Application'];
+auth.accessToken = "YOUR ACCESS TOKEN"
+auth.secret = "YOUR SECRET"
 
-var opts = {
-  'page': "page_example", // {String}
-  'perPage': "perPage_example", // {String}
-  'xRequestId': "xRequestId_example" // {String}
-};
+
+var accountId = "accountId_example"; // {String} The id of the account to be operated on (note that this identifies an account at the suffix level)
+
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data.account_balances[0].primary);
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.accountBalancesGet(opts, callback);
+BankingClient.accounts.get(accountId, opts, callback);
 
 ```
+
+## Documentation for Authorization
+
+
+### Application
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+  - write: allows reading and modifying resources
+  - read: allows reading resources
+  - read:profile: allows reading extended information about the user including address
+

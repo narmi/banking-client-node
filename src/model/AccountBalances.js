@@ -4,10 +4,7 @@
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -20,10 +17,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.AccountBalances = factory(root.banking_client.ApiClient);
+    root.BankingClient.AccountBalances = factory(root.BankingClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -50,6 +47,7 @@
 
 
 
+
   };
 
   /**
@@ -65,6 +63,9 @@
 
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('account_id')) {
+        obj['account_id'] = ApiClient.convertToType(data['account_id'], 'String');
       }
       if (data.hasOwnProperty('primary')) {
         obj['primary'] = ApiClient.convertToType(data['primary'], 'Number');
@@ -86,6 +87,10 @@
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
+  /**
+   * @member {String} account_id
+   */
+  exports.prototype['account_id'] = undefined;
   /**
    * @member {Number} primary
    */

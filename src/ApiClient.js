@@ -1,14 +1,10 @@
 /**
  * Narmi Banking API
-
  *
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -21,10 +17,10 @@
     module.exports = factory(require('superagent'), require('querystring'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.ApiClient = factory(root.superagent, root.querystring);
+    root.BankingClient.ApiClient = factory(root.superagent, root.querystring);
   }
 }(this, function(superagent, querystring) {
   'use strict';
@@ -93,6 +89,10 @@
       this.agent = new superagent.agent();
     }
 
+    /*
+     * Allow user to override superagent agent
+     */
+    this.requestAgent = null;
   };
 
   /**
@@ -321,7 +321,7 @@
               'Authorization': 'Bearer ' + auth.accessToken,
               'Date': date,
               'Signature': 'keyId="' + auth.accessToken + '",algorithm="hmac-' + 'sha256' + '",signature="' + signature + '",headers="date"',
-            });
+});
           }
           break;
         default:
@@ -367,6 +367,7 @@
    * @param {String} httpMethod The HTTP method to use.
    * @param {Object.<String, String>} pathParams A map of path parameters and their values.
    * @param {Object.<String, Object>} queryParams A map of query parameters and their values.
+   * @param {Object.<String, Object>} collectionQueryParams A map of collection query parameters and their values.
    * @param {Object.<String, Object>} headerParams A map of header parameters and their values.
    * @param {Object.<String, Object>} formParams A map of form parameters and their values.
    * @param {Object} bodyParam The value to pass as the request body.
@@ -379,7 +380,7 @@
    * @returns {Object} The SuperAgent request object.
    */
   exports.prototype.callApi = function callApi(path, httpMethod, pathParams,
-      queryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts,
+      queryParams, collectionQueryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts,
       returnType, callback) {
 
     var _this = this;
@@ -389,6 +390,25 @@
     // apply authentications
     this.applyAuthToRequest(request, authNames);
 
+    // set collection query parameters
+    for (var key in collectionQueryParams) {
+      if (collectionQueryParams.hasOwnProperty(key)) {
+        var param = collectionQueryParams[key];
+        if (param.collectionFormat === 'csv') {
+          // SuperAgent normally percent-encodes all reserved characters in a query parameter. However,
+          // commas are used as delimiters for the 'csv' collectionFormat so they must not be encoded. We
+          // must therefore construct and encode 'csv' collection query parameters manually.
+          if (param.value != null) {
+            var value = param.value.map(this.paramToString).map(encodeURIComponent).join(',');
+            request.query(encodeURIComponent(key) + "=" + value);
+          }
+        } else {
+          // All other collection query parameters should be treated as ordinary query parameters.
+          queryParams[key] = this.buildCollectionParam(param.value, param.collectionFormat);
+        }
+      }
+    }
+
     // set query parameters
     if (httpMethod.toUpperCase() === 'GET' && this.cache === false) {
         queryParams['_'] = new Date().getTime();
@@ -397,6 +417,12 @@
 
     // set header parameters
     request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
+
+
+    // set requestAgent if it is set by user
+    if (this.requestAgent) {
+      request.agent(this.requestAgent);
+    }
 
     // set request timeout
     request.timeout(this.timeout);
@@ -568,7 +594,7 @@
    * The default API client implementation.
    * @type {module:ApiClient}
    */
-  exports.instance = new exports();
+  exports.configuration = new exports();
 
   return exports;
 }));

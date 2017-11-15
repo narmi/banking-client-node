@@ -4,10 +4,7 @@
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -20,10 +17,10 @@
     module.exports = factory(require('../ApiClient'), require('./User'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.Account = factory(root.banking_client.ApiClient, root.banking_client.User);
+    root.BankingClient.Account = factory(root.BankingClient.ApiClient, root.BankingClient.User);
   }
 }(this, function(ApiClient, User) {
   'use strict';
@@ -44,7 +41,6 @@
    */
   var exports = function() {
     var _this = this;
-
 
 
 
@@ -91,9 +87,6 @@
       if (data.hasOwnProperty('routing')) {
         obj['routing'] = ApiClient.convertToType(data['routing'], 'String');
       }
-      if (data.hasOwnProperty('wire_routing')) {
-        obj['wire_routing'] = ApiClient.convertToType(data['wire_routing'], 'String');
-      }
     }
     return obj;
   }
@@ -132,11 +125,6 @@
    * @member {String} routing
    */
   exports.prototype['routing'] = undefined;
-  /**
-   * The ABA number associated with the account.
-   * @member {String} wire_routing
-   */
-  exports.prototype['wire_routing'] = undefined;
 
 
 

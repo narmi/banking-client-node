@@ -2,7 +2,7 @@
   "name": "banking-client",
   "version": "0.1.0",
   "description": "Banking API client.",
-  "license": "Unlicense",
+  "license": "All rights reserved",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"

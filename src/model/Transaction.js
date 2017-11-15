@@ -1,14 +1,10 @@
 /**
  * Narmi Banking API
-
  *
  * OpenAPI spec version: 0.1.0
  * Contact: contact@narmitech.com
  *
- * NOTE: This class is auto generated.
-
- *
- * Do not edit the class manually.
+ * NOTE: This class is auto generated, do not edit the class manually.
  *
  */
 
@@ -21,10 +17,10 @@
     module.exports = factory(require('../ApiClient'), require('./Check'), require('./Location'));
   } else {
     // Browser globals (root is window)
-    if (!root.banking_client) {
-      root.banking_client = {};
+    if (!root.BankingClient) {
+      root.BankingClient = {};
     }
-    root.banking_client.Transaction = factory(root.banking_client.ApiClient, root.banking_client.Check, root.banking_client.Location);
+    root.BankingClient.Transaction = factory(root.BankingClient.ApiClient, root.BankingClient.Check, root.BankingClient.Location);
   }
 }(this, function(ApiClient, Check, Location) {
   'use strict';
