@@ -82,10 +82,10 @@
         obj['source'] = ApiClient.convertToType(data['source'], 'String');
       }
       if (data.hasOwnProperty('settled_at')) {
-        obj['settled_at'] = ApiClient.convertToType(data['settled_at'], 'Date');
+        obj['settled_at'] = ApiClient.convertToType(data['settled_at'], 'String');
       }
       if (data.hasOwnProperty('created_at')) {
-        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
+        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
       }
       if (data.hasOwnProperty('account_id')) {
         obj['account_id'] = ApiClient.convertToType(data['account_id'], 'String');
@@ -133,11 +133,11 @@
    */
   exports.prototype['source'] = undefined;
   /**
-   * @member {Date} settled_at
+   * @member {String} settled_at
    */
   exports.prototype['settled_at'] = undefined;
   /**
-   * @member {Date} created_at
+   * @member {String} created_at
    */
   exports.prototype['created_at'] = undefined;
   /**

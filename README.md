@@ -11,11 +11,12 @@ This SDK is automatically generated for:
 
 ### node (npm)
 
-The library is hosted at a git repository, (https://github.com/narmitech/banking-client-node), it can be installed via:
+Install via NPM:
 
-```shell
-npm install narmitech/banking-client-node --save
-```
+    npm install github:narmitech/banking-client-node --save
+
+The library is hosted at a git repository, (https://github.com/narmitech/banking-client-node).
+
 
 Or in a `package.json`:
 ```js
@@ -35,27 +36,23 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```javascript
 var BankingClient = require('banking-client');
-
 var config = BankingClient.ApiClient.configuration;
-config.basePath = "YOUR BASE PATH"
+config.basePath = "{{default_base_url}}";
 
-// Configure OAuth2 access token
 var auth = config.authentications['Application'];
-auth.accessToken = "YOUR ACCESS TOKEN"
-auth.secret = "YOUR SECRET"
+auth.accessToken = '{{default_api_key}}';
+auth.secret = '{{default_api_secret}}';
 
-
-var accountId = "accountId_example"; // {String} The id of the account to be operated on (note that this identifies an account at the suffix level)
-
+var opts = {};
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully. Returned data: ', data);
   }
 };
-BankingClient.accounts.get(accountId, opts, callback);
+BankingClient.transactions.list(opts, callback);
 
 ```
 

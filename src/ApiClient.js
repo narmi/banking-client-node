@@ -43,7 +43,7 @@
      * @type {String}
      * @default https://api.example.com/v1
      */
-    this.basePath = 'https://api.example.com/v1'.replace(/\/+$/, '');
+    this.basePath = 'https://api.example.com/v1';
 
     /**
      * The authentication methods to be included for all API calls.
@@ -121,7 +121,7 @@
     if (!path.match(/^\//)) {
       path = '/' + path;
     }
-    var url = this.basePath + path;
+    var url = this.basePath.replace(/\/+$/, '') + path;
     var _this = this;
     url = url.replace(/\{([\w-]+)\}/g, function(fullMatch, key) {
       var value;

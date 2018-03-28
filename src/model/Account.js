@@ -76,7 +76,7 @@
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('updated_at')) {
-        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
+        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
       }
       if (data.hasOwnProperty('users')) {
         obj['users'] = ApiClient.convertToType(data['users'], [User]);
@@ -109,7 +109,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * @member {Date} updated_at
+   * @member {String} updated_at
    */
   exports.prototype['updated_at'] = undefined;
   /**
