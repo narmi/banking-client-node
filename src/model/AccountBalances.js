@@ -77,7 +77,7 @@
         obj['ledger'] = ApiClient.convertToType(data['ledger'], 'Number');
       }
       if (data.hasOwnProperty('updated_at')) {
-        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
+        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
       }
     }
     return obj;
@@ -104,7 +104,7 @@
    */
   exports.prototype['ledger'] = undefined;
   /**
-   * @member {Date} updated_at
+   * @member {String} updated_at
    */
   exports.prototype['updated_at'] = undefined;
 

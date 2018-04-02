@@ -11,18 +11,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/Transfer'], factory);
+    define(['ApiClient', 'model/Error', 'model/InlineResponse201', 'model/Transfer'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/Transfer'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/InlineResponse201'), require('../model/Transfer'));
   } else {
     // Browser globals (root is window)
     if (!root.BankingClient) {
       root.BankingClient = {};
     }
-    root.BankingClient.TransferApi = factory(root.BankingClient.ApiClient, root.BankingClient.Error, root.BankingClient.Transfer);
+    root.BankingClient.TransferApi = factory(root.BankingClient.ApiClient, root.BankingClient.Error, root.BankingClient.InlineResponse201, root.BankingClient.Transfer);
   }
-}(this, function(ApiClient, Error, Transfer) {
+}(this, function(ApiClient, Error, InlineResponse201, Transfer) {
   'use strict';
 
   /**
@@ -46,7 +46,7 @@
      * Callback function to receive the result of the create operation.
      * @callback module:api/TransferApi~createCallback
      * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
+     * @param {module:model/InlineResponse201} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -59,7 +59,7 @@
      * @param {String} opts.signature 
      * @param {String} opts.xRequestId 
      * @param {module:api/TransferApi~createCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * data is of type: {@link module:model/InlineResponse201}
      */
     this.create = function(body, opts, callback) {
       opts = opts || {};
@@ -89,7 +89,7 @@
       var authNames = ['Application'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Object;
+      var returnType = InlineResponse201;
 
       return this.apiClient.callApi(
         '/transfers', 'POST',
